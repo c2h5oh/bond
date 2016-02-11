@@ -1,6 +1,6 @@
 package bond
 
-import "upper.io/db"
+import "upper.io/db.v2"
 
 type result struct {
 	session    Session

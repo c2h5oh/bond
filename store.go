@@ -3,7 +3,7 @@ package bond
 import (
 	"reflect"
 
-	"upper.io/db"
+	"upper.io/db.v2"
 )
 
 type Store interface {

@@ -4,7 +4,7 @@ import (
 	"reflect"
 	"sync"
 
-	"upper.io/db"
+	"upper.io/db.v2"
 )
 
 type Session interface {

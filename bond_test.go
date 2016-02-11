@@ -9,8 +9,8 @@ import (
 
 	"github.com/stretchr/testify/assert"
 	"upper.io/bond"
-	"upper.io/db"
-	_ "upper.io/db/postgresql"
+	"upper.io/db.v2"
+	"upper.io/db.v2/postgresql"
 )
 
 var (
@@ -103,11 +103,8 @@ func init() {
 	var err error
 	DB = &database{}
 
-	DB.Session, err = bond.Open(`postgresql`, db.Settings{
-		Host:     testHost,
-		User:     "bond_user",
-		Database: "bond_test",
-	})
+	connURL, _ := postgresql.ParseURL(fmt.Sprintf("user=bond_user host=%s dbname=bond_test sslmode=disable", testHost))
+	DB.Session, err = bond.Open(`postgresql`, connURL)
 
 	if err != nil {
 		panic(err)
